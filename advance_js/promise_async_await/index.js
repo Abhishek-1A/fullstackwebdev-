@@ -98,29 +98,43 @@
 
 // permorming promise chaining 
 
-function asycFun1() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() =>{
-       console.log("data1");
-       resolve("success")
-        }, 4000)
+// function asycFun1() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() =>{
+//        console.log("data1");
+//        resolve("success")
+//         }, 4000)
+//     })
+// }
+
+// function asyncfun2(){
+//     return new Promise((resolve,reject) =>{
+//         setTimeout(() => {
+//             console.log("data2");
+//        resolve("success")
+//         }, 4000);
+//     })
+// };
+
+//    console.log("fetching data1....");
+//    asycFun1().then((res)=>{
+//     console.log("fetching data2");
+//     asyncfun2().then((res) =>{})
+//     });
+   
+//  normal example of async await
+
+function api() {
+    return new Promise((resolve, reject) =>{
+        setTimeout(() => {
+            console.log("weather data");
+            resolve(200);
+        }, 2000);
     })
 }
 
-function asyncfun2(){
-    return new Promise((resolve,reject) =>{
-        setTimeout(() => {
-            console.log("data2");
-       resolve("success")
-        }, 4000);
-    })
-};
-
-   console.log("fetching data1....");
-   asycFun1().then((res)=>{
-    console.log("fetching data2");
-    asyncfun2().then((res) =>{})
-    });
-   
-
+async function getWeatherdata() {
+    await api();  // 1st call
+    await api();  // 2st call
+}
    
