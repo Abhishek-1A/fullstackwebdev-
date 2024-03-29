@@ -80,18 +80,47 @@
 
 // promise example  :--> user ask for a num betw 0 to 9 if num is below 5 or above 5
 
-var ans= new Promise((resolve, reject) => {
-    var n= Math.floor(Math.random( ) * 10);
+//  var ans= new Promise((resolve, reject) => {
+//     var n= Math.floor(Math.random( ) * 10);
 
-    if(n<5) {
-        return resolve();
-    } else {
-        return reject();
-    }
-})
- ans.then(()=> {
-    console.log("below");
- })
- .catch(() =>{
-    console.log("Above");
- })
+//     if(n<5) {
+//         return resolve();
+//     } else {
+//         return reject();
+//     }
+//  })
+//  ans.then(()=> {
+//     console.log("below");
+//  })
+//  .catch(() =>{
+//     console.log("Above");
+//  })
+
+// permorming promise chaining 
+
+function asycFun1() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+       console.log("data1");
+       resolve("success")
+        }, 4000)
+    })
+}
+
+function asyncfun2(){
+    return new Promise((resolve,reject) =>{
+        setTimeout(() => {
+            console.log("data2");
+       resolve("success")
+        }, 4000);
+    })
+};
+
+   console.log("fetching data1....");
+   asycFun1().then((res)=>{
+    console.log("fetching data2");
+    asyncfun2().then((res) =>{})
+    });
+   
+
+   
