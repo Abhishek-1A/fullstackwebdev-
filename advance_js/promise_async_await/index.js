@@ -124,17 +124,38 @@
    
 //  normal example of async await
 
-function api() {
+// function api() {
+//     return new Promise((resolve, reject) =>{
+//         setTimeout(() => {
+//             console.log("weather data");
+//             resolve(200);
+//         }, 2000);
+//     })
+// }
+
+// async function getWeatherdata() {
+//     await api();  // 1st call
+//     await api();  // 2st call
+// }
+
+// example of async await
+
+function getData(dataId) {
     return new Promise((resolve, reject) =>{
         setTimeout(() => {
-            console.log("weather data");
-            resolve(200);
+            console.log("Data", dataId);
+            resolve("success")
         }, 2000);
     })
 }
 
-async function getWeatherdata() {
-    await api();  // 1st call
-    await api();  // 2st call
+// Async-await
+async function getAlldata(){
+    console.log("getting data1...");
+    await getData(1);
+    console.log("getting 2...");
+    await getData(2);
+    console.log("getting data3...");
+    await getData(3);
 }
    
